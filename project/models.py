@@ -3,16 +3,16 @@ from sqlalchemy.orm import relationship
 
 from project.setup.db import models
 
-"""создаем модель жанра"""
-class Genre(models.Base):
-    __tablename__ = 'genres'
 
+class Genre(models.Base):
+    """создаем модель жанра"""
+    __tablename__ = 'genres'
     name = Column(String(100), unique=True, nullable=False)
 
-"""создаем модель режисера"""
-class Director(models.Base):
-    __tablename__ = 'director'
 
+class Director(models.Base):
+    """создаем модель режисера"""
+    __tablename__ = 'director'
     name = Column(String(100), unique=True, nullable=False)
 
 
@@ -30,13 +30,20 @@ class Movie(models.Base):
     director = relationship("Director")
 
 
-
-
 class User(models.Base):
     """создаем модель пользователя"""
-    pass
+    __tablename__ = 'users'
+    email = Column(String(100), unique=True, nullable=False)
+    password = Column(String(100), nullable=False)
+    name = Column(String(100))
+    surname = Column(String(100))
+    favorite_genre = Column(String(100))
 
 
 class Favorite(models.Base):
     """создаем модель избранного(не Нео)"""
-    pass
+    __tablename__ = 'favorites'
+    user_id = Column(Integer(), ForeignKey("users.id"))
+    user = relationship("User")
+    movie_id = Column(Integer(), ForeignKey("movies.id"))
+    movie = relationship("Movie")
