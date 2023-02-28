@@ -16,11 +16,16 @@ class Director(models.Base):
 
 
 """создаем модель фильма"""
+class Movie(models.Base):
+    pass
 
 
 
 """создаем модель пользователя"""
 
-
+class User(models.Base):
+    pass
 
 """создаем модель избранного(не Нео)"""
+class Favorite(models.Base):
+    pass
