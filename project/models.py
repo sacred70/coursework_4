@@ -1,4 +1,5 @@
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
+from sqlalchemy.orm import relationship
 
 from project.setup.db import models
 
@@ -15,17 +16,27 @@ class Director(models.Base):
     name = Column(String(100), unique=True, nullable=False)
 
 
-"""создаем модель фильма"""
 class Movie(models.Base):
-    pass
+    """создаем модель фильма"""
+    __tablename__ = 'movie'
+    title = Column(String(100), unique=True, nullable=False)
+    description = Column(String(3000))
+    trailer = Column(String(300))
+    year = Column(Integer())
+    rating = Column(Float())
+    genre_id = Column(Integer(), ForeignKey("genre.id"))
+    genre = relationship("Genre")
+    director_id = Column(Integer(), ForeignKey("directors.id"))
+    director = relationship("Director")
 
 
 
-"""создаем модель пользователя"""
 
 class User(models.Base):
+    """создаем модель пользователя"""
     pass
 
-"""создаем модель избранного(не Нео)"""
+
 class Favorite(models.Base):
+    """создаем модель избранного(не Нео)"""
     pass
