@@ -14,5 +14,5 @@ class MoviesService:
             return movie
         raise ItemNotFound(f'Movie with pk={pk} not exists.')
 
-    def get_all(self, page: Optional[int] = None) -> list[Movie]:
+    def get_all(self, page: Optional[int] = None, status: Optional[int] = None) -> list[Movie]:
         return self.dao.get_all(page=page, status=status)
