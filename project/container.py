@@ -1,5 +1,10 @@
-from project.dao import MoviesDAO, DirectorsDAO, GenresDAO, UserDAO
-from project.services import MoviesService, DirectorsService, GenresService, UserService, AuthService
+from project.dao.main import MoviesDAO, DirectorsDAO, GenresDAO
+from project.dao.user import UserDAO
+from project.services.user_service import UserService
+from project.services.directors_service import DirectorsService
+from project.services.auht_service import AuthService
+from project.services.genres_service import GenresService
+from project.services.movies_service import MoviesService
 from project.setup.db import db
 
 # DAO
