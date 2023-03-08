@@ -27,7 +27,7 @@ def create_app(config_obj):
         db.create_all()
     api.init_app(app)
 
-    # Регистрация эндпоинтов
+    #  Регистрация эндпоинтов
     api.add_namespace(user_ns)
     api.add_namespace(auth_ns)
 

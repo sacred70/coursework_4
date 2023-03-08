@@ -27,7 +27,7 @@ class Movie(models.Base):
     #genre_id = Column(Integer(), ForeignKey("genre.id"))
     #genre = relationship("Genre")
     #director_id = Column(Integer(), ForeignKey("directors.id"))
-    #director = relationship("Director")
+    # director = relationship("Director")
 
 
 class User(models.Base):
@@ -41,7 +41,7 @@ class User(models.Base):
 
 
 class Favorite(models.Base):
-    """создаем модель избранного(не Нео)"""
+    """создаем модель избранного"""
     __tablename__ = 'favorites'
     #user_id = Column(Integer(), ForeignKey("users.id"))
     #user = relationship("User")
