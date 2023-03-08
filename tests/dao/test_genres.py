@@ -19,7 +19,7 @@ class TestGenresDAO:
 
     @pytest.fixture
     def genre_2(self, db):
-        g = Genre(name="Комедия")
+        g = Genre(name="Фантастика")
         db.session.add(g)
         db.session.commit()
         return g
