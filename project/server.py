@@ -23,7 +23,7 @@ def create_app(config_obj):
 
     db.init_app(app)
     with app.app_context():
-        db.init_app()
+        db.drop_all()
         db.create_all()
     api.init_app(app)
 
