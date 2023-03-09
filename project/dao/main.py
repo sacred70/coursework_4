@@ -1,3 +1,6 @@
+from sqlalchemy import desc
+from werkzeug.exceptions import NotFound
+
 from project.dao.base import BaseDAO
 from project.models import Genre, Movie, Director
 
