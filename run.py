@@ -3,6 +3,7 @@ from project.models import Movie, Director, Genre, User
 from project.server import create_app, db
 
 app = create_app(config)
+#app = db.drop_all()
 
 
 @app.shell_context_processor
