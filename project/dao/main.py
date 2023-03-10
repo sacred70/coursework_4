@@ -12,9 +12,9 @@ class GenresDAO(BaseDAO[Genre]):
 class MoviesDAO(BaseDAO[Movie]):
     __model__ = Movie
 
-    def get_all(self, page, filter):
+    def get_all(self, page, status):
         stat = self._db_session.query(self.__model__)
-        if filter:
+        if status:
             stat = stat.order_by(desc(self.__model__.year))
         if page:
             try:
