@@ -18,7 +18,7 @@ class MoviesDAO(BaseDAO[Movie]):
             stat = stat.order_by(desc(self.__model__.year))
         if page:
             try:
-                return stat.paginate(page, self._items_per_page).items
+                return stat.paginate(page=page, per_page=self._items_per_page).items
             except NotFound:
                 return []
         return stat.all()
