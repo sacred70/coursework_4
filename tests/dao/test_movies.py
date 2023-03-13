@@ -1,6 +1,6 @@
 import pytest
 
-from project.dao.main import MoviesDAO
+from project.dao import MoviesDAO
 from project.models import Movie
 
 
@@ -53,16 +53,16 @@ class TestMoviesDAO:
         assert not movies_dao.get_by_id(1)
 
     def test_get_all_movies(self, movies_dao, movie_1, movie_2):
-        assert movies_dao.get_all(page=None) == [movie_1, movie_2]
+        assert movies_dao.get_all(page=None, status=None) == [movie_1, movie_2]
 
     def test_get_movies_by_page(self, app, movies_dao, movies):
         app.config['ITEMS_PER_PAGE'] = 12
-        assert movies_dao.get_all(page=1) == movies[:12]
-        assert movies_dao.get_all(page=2) == movies[12:]
-        assert movies_dao.get_all(page=3) == []
+        assert movies_dao.get_all(page=1, status=None) == movies[:12]
+        assert movies_dao.get_all(page=2, status=None) == movies[12:]
+        assert movies_dao.get_all(page=3, status=None) == []
 
     def test_get_movies_by_status(self, app, movies_dao, movies):
         app.config['ITEMS_PER_PAGE'] = 12
-        assert movies_dao.get_all(page=1) == [movies[6], *movies[13:6:-1], *movies[5:1:-1]]
-        assert movies_dao.get_all(page=2) == [*movies[1::-1]]
-        assert movies_dao.get_all(page=3) == []
+        assert movies_dao.get_all(page=1, status='new') == [movies[6], *movies[13:6:-1], *movies[5:1:-1]]
+        assert movies_dao.get_all(page=2, status='new') == [*movies[1::-1]]
+        assert movies_dao.get_all(page=3, status='new') == []

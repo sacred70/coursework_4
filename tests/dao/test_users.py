@@ -1,7 +1,7 @@
 import pytest
 from sqlalchemy.exc import IntegrityError
 
-from project.dao.user import UserDAO
+from project.dao import UserDAO
 from project.models import User, Movie
 
 
@@ -71,3 +71,4 @@ class TestUserDAO:
         users_dao.delete_favorite(user_1.id, movie_1.id)
 
         assert len(users_dao.get_favorites(user_1.id)) == 0
+
