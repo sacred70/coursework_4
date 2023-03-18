@@ -13,7 +13,7 @@ class TestUsersService:
         dao = dao_mock()
         dao.get_by_email.return_value = User(
             id=1, email='user1_test@email.me', password='UBbzr6FvcqYGvujlFWZOF7WLQjMtDJR8ptM15jKufOE=',
-            name='Ivan', surname='Ivanov', favourite_genre=''
+            name='Ivan', surname='Ivanov', favorite_genre=''
         )
         dao.create.return_value = User(id=1, email='user2_test@email.me', password='password')
         dao.get_favorites.return_value = [Movie(title="Movie_1"), Movie(title="Movie_9")]
