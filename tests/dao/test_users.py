@@ -1,7 +1,7 @@
 import pytest
 from sqlalchemy.exc import IntegrityError
 
-from project.dao import UserDAO
+from project.dao.user import UserDAO
 from project.models import User, Movie
 
 
@@ -15,7 +15,7 @@ class TestUserDAO:
     def user_1(self, db):
         user = User(
             email="me@email.me", password="UBbzr6FvcqYGvujlFWZOF7WLQjMtDJR8ptM15jKufOE",
-            name="Ivan", surname="Ivanov", favourite_genre=""
+            name="Ivan", surname="Ivanov", favorite_genre=2
         )
         db.session.add(user)
         db.session.commit()
@@ -25,7 +25,7 @@ class TestUserDAO:
     def user_2(self, db):
         user = User(
             email="second@email.me", password="UBbzr6FvcqYGvujlFWZOF7WLQjMtDJR8ptM15jKufOE",
-            name="Michael", surname="Myers", favourite_genre=6
+            name="Michael", surname="Myers", favorite_genre=3
         )
         db.session.add(user)
         db.session.commit()

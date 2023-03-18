@@ -6,28 +6,30 @@ from project.setup.db import models
 
 class Genre(models.Base):
     """создаем модель жанра"""
-    __tablename__ = 'genres'
+    __tablename__ = 'genre'
+    id = Column(Integer, primary_key=True)
     name = Column(String(100), unique=True, nullable=False)
 
 
 class Director(models.Base):
     """создаем модель режисера"""
     __tablename__ = 'director'
+    id = Column(Integer, primary_key=True)
     name = Column(String(100), unique=True, nullable=False)
 
 
 class Movie(models.Base):
     """создаем модель фильма"""
-    __tablename__ = 'movie'
+    __tablename__ = 'movies'
     title = Column(String(100), unique=True, nullable=False)
     description = Column(String(3000))
     trailer = Column(String(300))
     year = Column(Integer())
     rating = Column(Float())
-    #genre_id = Column(Integer(), ForeignKey("genre.id"))
-    #genre = relationship("Genre")
-    #director_id = Column(Integer(), ForeignKey("directors.id"))
-    # director = relationship("Director")
+    genre_id = Column(Integer(), ForeignKey("genre.id"), nullable=False)
+    genre = relationship("Genre")
+    director_id = Column(Integer(), ForeignKey("director.id"), nullable=False)
+    director = relationship("Director")
 
 
 class User(models.Base):
@@ -43,7 +45,7 @@ class User(models.Base):
 class Favorite(models.Base):
     """создаем модель избранного"""
     __tablename__ = 'favorites'
-    #user_id = Column(Integer(), ForeignKey("users.id"))
-    #user = relationship("User")
-    #movie_id = Column(Integer(), ForeignKey("movies.id"))
-    #movie = relationship("Movie")
+    user_id = Column(Integer(), ForeignKey("users.id"))
+    user = relationship("User")
+    movie_id = Column(Integer(), ForeignKey("movies.id"))
+    movie = relationship("Movie")

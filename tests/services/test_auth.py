@@ -15,7 +15,7 @@ class TestAuthService:
         dao = dao_mock()
         dao.get_by_email.return_value = User(
             id=1, email='user1_test@email.me', password='UBbzr6FvcqYGvujlFWZOF7WLQjMtDJR8ptM15jKufOE=',
-            name='Ivan', surname='Ivanov', favourite_genre=''
+            name='Ivan', surname='Ivanov', favorite_genre=''
         )
         return dao
 
