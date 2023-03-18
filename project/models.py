@@ -26,9 +26,9 @@ class Movie(models.Base):
     trailer = Column(String(300))
     year = Column(Integer())
     rating = Column(Float())
-    genre_id = Column(Integer(), ForeignKey("genre.id"), nullable=False)
+    genre_id = Column(Integer(), ForeignKey("genre.id"), nullable=True)
     genre = relationship("Genre")
-    director_id = Column(Integer(), ForeignKey("director.id"), nullable=False)
+    director_id = Column(Integer(), ForeignKey("director.id"), nullable=True)
     director = relationship("Director")
 
 
